@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabassum samana - English & Computer Teacher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #7e22ce 50%, #1e293b 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 2px solid rgba(147, 51, 234, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #9333ea;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #ffffff;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+        }
+
+        .profile-circle {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #f59e0b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            box-shadow: 0 0 60px rgba(147, 51, 234, 0.6);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #c084fc;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.4);
+            margin: 0 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(147, 51, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #9333ea;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            color: #d1d5db;
+            line-height: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.8rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #9333ea;
+            font-weight: 700;
+        }
+
+        .highlight-pink {
+            color: #ec4899;
+            font-weight: 700;
+        }
+
+        .highlight-orange {
+            color: #f59e0b;
+            font-weight: 700;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(126, 34, 206, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #9333ea;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            color: #9333ea;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            background: none;
+            -webkit-text-fill-color: white;
+            margin: 0;
+        }
+
+        .card p {
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .card .detail {
+            color: #c084fc;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .experience-card {
+            background: rgba(126, 34, 206, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 25px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: #9333ea;
+            box-shadow: 0 20px 50px rgba(147, 51, 234, 0.3);
+        }
+
+        .experience-card h3 {
+            font-size: 2rem;
+            color: #9333ea;
+            margin-bottom: 1rem;
+            background: none;
+            -webkit-text-fill-color: #9333ea;
+        }
+
+        .experience-card .role {
+            font-size: 1.3rem;
+            color: #ec4899;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .experience-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #9333ea;
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .timeline-item {
+            background: rgba(126, 34, 206, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-color: #9333ea;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.8rem;
+            color: #9333ea;
+            margin-bottom: 0.5rem;
+            background: none;
+            -webkit-text-fill-color: #9333ea;
+        }
+
+        .timeline-item .degree {
+            font-size: 1.3rem;
+            color: #ec4899;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .timeline-item .description {
+            color: #d1d5db;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(126, 34, 206, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 25px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: #9333ea;
+            box-shadow: 0 20px 50px rgba(147, 51, 234, 0.3);
+        }
+
+        .skill-category h3 {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .skill-item {
+            margin-bottom: 2rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .skill-percent {
+            color: #9333ea;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #9333ea, #ec4899, #f59e0b);
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            font-size: 1.3rem;
+            color: #d1d5db;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-box {
+            background: rgba(126, 34, 206, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 30px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: rgba(126, 34, 206, 0.5);
+            transform: translateY(-10px) scale(1.05);
+            border-color: #9333ea;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-detail {
+            font-size: 0.95rem;
+            color: #c084fc;
+            word-break: break-word;
+        }
+
+        footer {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 2px solid rgba(147, 51, 234, 0.3);
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 1.05rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .skills-container { grid-template-columns: 1fr; }
+            .experience-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(30, 41, 59, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            nav ul.active { display: flex; }
+
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .profile-circle {
+                width: 140px;
+                height: 140px;
+                font-size: 3rem;
+            }
+
+            .contact-grid { grid-template-columns: 1fr; }
+            section { padding: 6rem 1.5rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Tabassum Samana</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="profile-circle">TS</div>
+            <h1>Tabssum Samana</h1>
+            <p class="subtitle">English & Computer Teacher | BCA Student</p>
+            <p class="description">
+                Dedicated educator passionate about empowering students through English language skills and Computer education. Committed to creating engaging learning experiences.
+            </p>
+            <div>
+                <a href="#about" class="btn">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Hello! I'm <span class="highlight">Tabasum Samana</span>, a passionate educator with experience teaching <span class="highlight-pink">English</span> and <span class="highlight-orange">Computer Science</span> at the school level.
+                    </p>
+                    <p>
+                        Currently, I am pursuing my <span class="highlight">Bachelor of Computer Applications (BCA)</span>, which allows me to stay updated with the latest technological advancements while continuing my teaching journey.
+                    </p>
+                    <p>
+                        My teaching philosophy centers around creating an <span class="highlight-pink">inclusive</span> and <span class="highlight-orange">interactive</span> learning environment where every student feels valued and motivated to excel.
+                    </p>
+                    <p>
+                        I believe in combining traditional teaching methods with modern technology to make learning more engaging and effective. My goal is to inspire students to develop both their language skills and technical knowledge.
+                    </p>
+                    <p>
+                        With a strong foundation in both subjects, I strive to bridge the gap between theoretical knowledge and practical application, preparing students for real-world challenges.
+                    </p>
+                </div>
+
+                <div class="info-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                            <h3>English Teacher</h3>
+                        </div>
+                        <p>Teaching English language & literature</p>
+                        <p class="detail">Helping students develop strong communication and writing skills</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <h3>Computer Teacher</h3>
+                        </div>
+                        <p>Teaching Computer Science fundamentals</p>
+                        <p class="detail">Introducing students to programming, technology & digital literacy</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                            </svg>
+                            <h3>BCA Student</h3>
+                        </div>
+                        <p>Currently pursuing Bachelor of Computer Applications</p>
+                        <p class="detail">Continuously learning and growing in technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Teaching Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>📚 English Teacher</h3>
+                    <p class="role">School Level Education</p>
+                    <ul>
+                        <li>Teaching English grammar, vocabulary, and literature</li>
+                        <li>Developing reading comprehension and writing skills</li>
+                        <li>Conducting interactive speaking and listening activities</li>
+                        <li>Preparing students for examinations</li>
+                        <li>Creating engaging lesson plans and materials</li>
+                        <li>Fostering a love for reading and language</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>💻 Computer Teacher</h3>
+                    <p class="role">School Level Education</p>
+                    <ul>
+                        <li>Teaching computer fundamentals and applications</li>
+                        <li>Introduction to programming concepts</li>
+                        <li>Microsoft Office Suite training</li>
+                        <li>Internet safety and digital citizenship</li>
+                        <li>Basic coding and problem-solving skills</li>
+                        <li>Hands-on practical computer sessions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <h3>🎓 Bachelor of Computer Applications (BCA)</h3>
+                    <p class="degree">Currently Pursuing</p>
+                    <p class="description">
+                        Gaining comprehensive knowledge in computer applications, programming languages, database management, web development, and software engineering. This degree enhances my ability to teach computer science effectively and stay current with technology trends.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>👩‍🏫 Teaching Qualification</h3>
+                    <p class="degree">English & Computer Science</p>
+                    <p class="description">
+                        Specialized training in teaching methodologies for both English language instruction and Computer Science education at the school level. Focus on creating student-centered learning environments and effective classroom management.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>📖 Language Proficiency</h3>
+                    <p class="degree">English Language</p>
+                    <p class="description">
+                        Strong command of English language with excellent grammar, vocabulary, and communication skills. Capable of teaching all aspects of English including reading, writing, speaking, and listening comprehension.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>
+                        <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right: 10px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        English Teaching
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Programming & Coding</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Microsoft Office Suite</span>
+                            <span class="skill-percent">93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Web Development</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Database Management</span>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">
+                    I'd love to hear from you! Whether you have questions about my teaching methods, want to discuss educational opportunities, or just want to connect, feel free to reach out through any of the following channels.
+                </p>
+
+                <div class="contact-box">
+                    <div class="contact-grid">
+                        <a href="tel:+919904745248" class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-detail">+91 99047 45248</div>
+                        </a>
+
+                        <a href="mailto:tabu@gmail.com" class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-detail">tabassumsamana@gmail.com</div>
+                        </a>
+
+                        <a href="https://wa.me/919904745248" target="_blank" class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-label">linkedin</div>
+                            <div class="contact-detail">linkedin</div>
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <p style="color: #c084fc; font-size: 1.1rem; margin-bottom: 1rem;">Available for:</p>
+                        <p style="color: #d1d5db; font-size: 1rem; line-height: 1.8;">
+                            ✓ Teaching Opportunities &nbsp;&nbsp; ✓ Educational Consultations &nbsp;&nbsp; ✓ Tutoring Sessions &nbsp;&nbsp; ✓ Academic Collaboration
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tabassum Samana. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.95rem;">Passionate Educator | English & Computer Teacher</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.getAttribute('style').match(/width:\s*(\d+%)/)[1];
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            observer.observe(bar);
+        });
+    </script>
+</body>
+</html>
+                            <span class="skill-name">English Grammar</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Literature & Comprehension</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Communication Skills</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Creative Writing</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="skill-category"> -->
+                    <!-- <h3> -->
+                        <!-- <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right: 10px;"> -->
+                            <!-- <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path> -->
+                        <!-- </svg> -->
+                        <!-- Computer Science -->
+                    <!-- </h3> -->
+                    <!-- <div class="skill-item"> -->
+                        <!-- <div class="skill-header"> -->
